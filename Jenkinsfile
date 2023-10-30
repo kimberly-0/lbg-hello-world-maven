@@ -10,7 +10,6 @@ pipeline {
             stage('Checkout') {
                 steps {
                     // Get some code from a GitHub repository
-
                     git branch: 'main', url: 'https://github.com/kimberly-0/lbg-hello-world-maven'
                 }
             }
@@ -27,7 +26,8 @@ pipeline {
             }
             stage('Package') {
                 steps {
-                    sh "mvn -Dmaven.test.skip -Dmaven.compile.skip package"
+                    // Skip tests and compiling for the Package stage
+		    sh "mvn -Dmaven.test.skip -Dmaven.compile.skip package"
                 }
             }
         }
